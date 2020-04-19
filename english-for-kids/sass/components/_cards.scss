@@ -1,0 +1,129 @@
+// MAIN PAGE CARD
+
+.main-card {
+  width: 300px;
+  height: 280px;
+  border-radius: 5px;
+  box-shadow: 0 8px 8px 0 rgba(82, 71, 71, 0.25);
+  display: flex;
+  flex-direction: column;
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 400;
+  text-align: center;
+  margin: 20px 25px;
+  cursor: pointer;
+  transition: 0.6s;
+  background-color: $color-train;
+  color: #ffffff;
+}
+
+.main-card-play {
+  background-color: $color-play;
+}
+
+.main-card img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 8px solid #ffffff;
+  object-fit: cover;
+  margin: 25px auto;
+}
+
+// CARDS PAGE CARD
+
+.card-container {
+  perspective: 2000px;
+  margin: 20px 25px;
+ }
+
+.translate-card {
+  transform: rotateY(180deg);
+}
+
+.flipper {
+  transition: 0.7s;
+  transform-style: preserve-3d;
+  position: relative;
+  width: 300px;
+  height: 250px;
+  cursor: pointer;
+  box-shadow: 8px 12px 6px #6c6a6a;
+}
+
+.flipper-play {
+  height: 200px;
+}
+
+.front, .back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  text-align: center;
+  align-items: flex-end;
+  justify-content: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 5px 0 0 5px;
+}
+
+.front {
+  background-color: $color-train;
+}
+
+.back {
+  transform: rotateY(180deg);
+  background-color: $color-train;
+}
+
+.card-caption {
+  margin-bottom: 10px;
+  color: $color-train-text;
+  font-size: 24px;
+}
+
+.rotate {
+  position: absolute;
+  width: 50px;
+  height: 40px;
+  background-image: url(/src/assets/img/rotate.svg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  bottom: 5px;
+  right: 5px;
+  transition: 0.3s;
+  z-index: 3;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.completed-card {
+  opacity: 0.2;
+}
+
+@media (max-width: 374px) {
+
+  .main-card {
+    margin: 20px 0;
+  }
+
+  .card-container {
+    margin: 20px 0;
+  }
+}
+
+.hidden {
+  display: none;
+}

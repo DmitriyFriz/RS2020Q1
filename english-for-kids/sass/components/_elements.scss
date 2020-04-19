@@ -1,0 +1,24 @@
+.star-line{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  max-width: 1350px;
+  margin: 10px auto -10px;
+  height: 40px;
+  overflow: hidden;
+}
+
+.star-correct, .star-error {
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  background-size: 40px 40px;
+}
+
+.star-correct {
+  background-image: url(/src/assets/img/star-success.svg);
+}
+
+.star-error {
+  background-image: url(/src/assets/img/star-error.svg);
+}
