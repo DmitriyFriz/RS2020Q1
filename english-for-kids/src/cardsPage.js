@@ -94,8 +94,8 @@ main.addEventListener('click', (event) => {
   const currentCardContainer = event.target.closest('.card-container');
   cardsFlipper.classList.add('translate-card');
 
-  main.addEventListener('mouseover', function backFlip(event) {
-    if (event.target.closest('.card-container') == currentCardContainer) return;
+  document.addEventListener('mouseover', function backFlip(mouseEvent) {
+    if (mouseEvent.target.closest('.card-container') == currentCardContainer) return;
     cardsFlipper.classList.remove('translate-card');
     main.removeEventListener('mouseover', backFlip);
   });
@@ -189,7 +189,8 @@ function playWord(src) {
   audio.play();
 }
 
-function shuffle(array) {
+function shuffle(audio) {
+  let array = audio;
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];

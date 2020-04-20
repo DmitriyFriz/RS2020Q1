@@ -33,7 +33,7 @@ function changeStateBurgerMenu() {
   burgerButton.classList.toggle('burger-button-rotate');
   burgerOverlay.classList.toggle('visibility');
   headerNavigation.classList.toggle('visibility');
-};
+}
 
 function createHeader() {
   const header = document.createElement('header');
@@ -100,4 +100,4 @@ function createHeader() {
 
   header.append(divHeader);
   document.body.prepend(header);
-};
+}

@@ -1,6 +1,6 @@
 const titleCards = [
   ['Action (set A)', 'Action (set B)', 'Animals (set A)', 'Animals (set B)', 'Clothes', 'Emotions', 'Fruits', 'School'],
-  ['img/draw.jpg', 'img/sing.jpg', 'img/dog.jpg', 'img/lion.jpg', 'img/boot.jpg', 'img/smile.jpg', 'img/fruits/cherry.png', 'img/school/school.png']
+  ['img/draw.jpg', 'img/sing.jpg', 'img/dog.jpg', 'img/lion.jpg', 'img/boot.jpg', 'img/smile.jpg', 'img/fruits/cherry.png', 'img/school/school.png'],
 ];
 
 const cards = [
