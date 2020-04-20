@@ -3,6 +3,7 @@ import { titleCards } from './assets/cards.js';
 const titlePage = titleCards[0];
 const isReloadingPage = (performance.navigation.type == 1);
 const isTrainMode = JSON.parse(sessionStorage.getItem('isTrainMode'));
+const numberCardsGroup = sessionStorage.getItem('cardsGroup');
 
 createHeader();
 
@@ -24,8 +25,6 @@ menu.addEventListener('click', (event) => {
   const menuElement = event.target.closest('.navigation-item');
   if (!menuElement) return;
   sessionStorage.setItem('cardsGroup', menuElement.dataset.cardsGroup);
-  menu.querySelectorAll('.navigation-item').forEach((item) => item.classList.remove('navigation-active'));
-  menuElement.classList.add('navigation-active');
   changeStateBurgerMenu();
 });
 
@@ -76,6 +75,10 @@ function createHeader() {
 
   const liMainPage = document.createElement('li');
   liMainPage.classList.add('navigation-item');
+  liMainPage.setAttribute('data-cards-group', 'main-page');
+  if (liMainPage.dataset.cardsGroup == numberCardsGroup) {
+    liMainPage.classList.add('navigation-active');
+  }
   const aMainPage = document.createElement('a');
   aMainPage.setAttribute('href', 'index.html');
   aMainPage.textContent = 'Main Page';
@@ -87,6 +90,9 @@ function createHeader() {
     const li = document.createElement('li');
     li.classList.add('navigation-item');
     li.setAttribute('data-cards-group', i);
+    if (li.dataset.cardsGroup == numberCardsGroup) {
+      li.classList.add('navigation-active');
+    }
     const a = document.createElement('a');
     a.setAttribute('href', 'cards.html');
     a.textContent = cardName;
