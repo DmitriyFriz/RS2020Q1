@@ -183,6 +183,7 @@ function finishGame() {
   setTimeout(playWord, 100, finishAudio);
   divLine.classList.add('finish-line');
   divLine.innerHTML = finishText;
+  sessionStorage.setItem('cardsGroup', 'main-page');
   setTimeout(changeLocation, 3000);
 }
 
