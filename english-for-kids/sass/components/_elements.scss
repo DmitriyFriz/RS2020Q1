@@ -8,6 +8,13 @@
   overflow: hidden;
 }
 
+.finish-line {
+  justify-content: center;
+  align-items: flex-end;
+  color: $color-play-text;
+  font-size: 25px;
+}
+
 .star-correct, .star-error {
   width: 40px;
   min-width: 40px;

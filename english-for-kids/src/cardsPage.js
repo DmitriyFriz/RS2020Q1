@@ -86,6 +86,7 @@ checkboxMode.addEventListener('change', () => {
   buttonPlay.classList.toggle('hidden');
   buttonPlay.classList.remove('repeat');
   buttonPlay.removeEventListener('click', repeatAudio);
+  divLine.innerHTML = '';
 });
 
 // TRAIN MODE
@@ -164,15 +165,30 @@ function addStar(result) {
 }
 
 function finishGame() {
-  const finishAudio = errorsForGame ? finishGameAudio.failure : finishGameAudio.success;
+  let finishAudio = null;
+  let finishText = null;
+  if (errorsForGame == 0) {
+    finishAudio = finishGameAudio.success;
+    finishText = 'Excellent!';
+    document.body.classList.add('success');
+  } else {
+    finishAudio = finishGameAudio.failure;
+    finishText = (errorsForGame == 1) ? 'One error' : `${errorsForGame} errors`;
+    document.body.classList.add('failure');
+  }
+  cardContainers.forEach((card) => {
+    card.classList.add('hidden');
+  });
+  buttonPlay.classList.add('hidden');
   setTimeout(playWord, 100, finishAudio);
+  divLine.classList.add('finish-line');
+  divLine.innerHTML = finishText;
   setTimeout(changeLocation, 3000);
 }
 
 function changeLocation() {
   document.location.href = 'index.html';
 }
-
 
 function getSrcAudio(currentCardContainer) {
   let containerIndex = null;

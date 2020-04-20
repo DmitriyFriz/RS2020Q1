@@ -16,6 +16,27 @@ body {
   color: #2d303a;
 }
 
+.success, .failure {
+  background-repeat: no-repeat;
+  background-size: 600px;
+  background-position: 50%;
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+.success {
+  background-image: url(/src/assets/img/success.jpg);
+}
+
+.failure {
+  background-image: url(/src/assets/img/failure.jpg);
+}
+
+@media (max-width: 767px) {
+  .success, .failure {
+    background-size: 75%;
+  }
+}
 .wrapper {
   max-width: 1400px;
   width: 100%;
@@ -367,6 +388,13 @@ label:before {
   margin: 10px auto -10px;
   height: 40px;
   overflow: hidden;
+}
+
+.finish-line {
+  justify-content: center;
+  align-items: flex-end;
+  color: #BF6731;
+  font-size: 25px;
 }
 
 .star-correct, .star-error {
