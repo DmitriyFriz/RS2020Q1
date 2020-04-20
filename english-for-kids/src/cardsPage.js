@@ -75,7 +75,8 @@ const flippers = document.querySelectorAll('.flipper');
 const cardContainers = document.querySelectorAll('.card-container');
 
 checkboxMode.addEventListener('change', () => {
-  for (let i = 0; i < flippers.length; i++) {
+  for (let i = 0; i < cardContainers.length; i++) {
+    cardContainers[i].classList.remove('completed-card');
     flippers[i].classList.toggle('flipper-play');
     translateButtons[i].classList.toggle('hidden');
   }
@@ -190,9 +191,9 @@ function playWord(src) {
 }
 
 function shuffle(audio) {
-  let array = audio;
+  const array = audio;
   for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
+    const j = Math.floor(Math.random() * (array.length));
     [array[i], array[j]] = [array[j], array[i]];
   }
 }
