@@ -180,11 +180,6 @@ label {
   transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   cursor: pointer;
 }
-
-:checked + label {
-  background-color: #37D9B5;
-}
-
 label:after {
   content: "";
   width: 50px;
@@ -195,9 +190,7 @@ label:after {
   display: block;
   background-color: #f06c64;
   transition: all 0.6s;
-  cursor: pointer;
 }
-
 label:before {
   content: "Play";
   width: 70px;
@@ -207,8 +200,11 @@ label:before {
   top: 0px;
   display: block;
   transition: all 1s 0s ease;
-  cursor: pointer;
   color: #BF6731;
+}
+
+:checked + label {
+  background-color: #37D9B5;
 }
 
 :checked + label:before {
@@ -222,7 +218,7 @@ label:before {
 }
 
 :checked + label {
-  left: 0px;
+  left: 0;
 }
 
 :checked + label:after {

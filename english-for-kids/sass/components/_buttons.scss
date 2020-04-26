@@ -16,36 +16,34 @@ label {
   background-color: $color-play;
   transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   cursor: pointer;
+
+  &:after {
+    content: "";
+    width: $switcher-width;
+    height: 40px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: block;
+    background-color: $color-active;
+    transition: all 0.6s;
+  }
+
+  &:before {
+    content: "Play";
+    width: ($checkbox-width - $switcher-width);
+    height: 40px;
+    position: absolute;
+    left: $switcher-width;
+    top: 0px;
+    display: block;
+    transition: all 1s 0s ease;
+    color: $color-play-text;
+  }
 }
 
 :checked + label {
   background-color: $color-train;
-}
-
-label:after {
-  content: "";
-  width: $switcher-width;
-  height: 40px;
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  display: block;
-  background-color: $color-active;
-  transition: all 0.6s;
-  cursor: pointer;
-}
-
-label:before {
-  content: "Play";
-  width: ($checkbox-width - $switcher-width);
-  height: 40px;
-  position: absolute;
-  left: $switcher-width;
-  top: 0px;
-  display: block;
-  transition: all 1s 0s ease;
-  cursor: pointer;
-  color: $color-play-text;
 }
 
 :checked + label:before {
@@ -59,7 +57,7 @@ label:before {
 }
 
 :checked + label {
-  left: 0px;
+  left: 0;
 }
 
 :checked + label:after {
