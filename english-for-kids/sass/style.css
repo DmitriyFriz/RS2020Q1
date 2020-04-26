@@ -154,6 +154,11 @@ body {
     margin-top: 180px;
   }
 }
+@media (max-width: 767px) {
+  .selected-group {
+    display: none;
+  }
+}
 .visibility {
   display: block;
 }
