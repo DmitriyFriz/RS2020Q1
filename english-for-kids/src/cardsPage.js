@@ -97,7 +97,7 @@ main.addEventListener('click', (event) => {
   cardsFlipper.classList.add('translate-card');
 
   document.addEventListener('mouseover', function backFlip(mouseEvent) {
-    if (mouseEvent.target.closest('.card-container') == currentCardContainer) return;
+    if (mouseEvent.target.closest('.card-container') === currentCardContainer) return;
     cardsFlipper.classList.remove('translate-card');
     main.removeEventListener('mouseover', backFlip);
   });
@@ -132,12 +132,12 @@ main.addEventListener('click', (event) => {
   if (!selectedCard || selectedCard.classList.contains('completed-card')) return;
   const rightAudio = audioForGame[indexForGame];
   const selectedAudio = getSrcAudio(selectedCard);
-  if (selectedAudio == rightAudio) {
+  if (selectedAudio === rightAudio) {
     selectedCard.classList.add('completed-card');
     setTimeout(playWord, 100, resultAudio.correct);
     addStar('correct');
     ++indexForGame;
-    if (indexForGame == audioForGame.length) {
+    if (indexForGame === audioForGame.length) {
       finishGame();
       return;
     }
@@ -167,13 +167,13 @@ function addStar(result) {
 function finishGame() {
   let finishAudio = null;
   let finishText = null;
-  if (errorsForGame == 0) {
+  if (errorsForGame === 0) {
     finishAudio = finishGameAudio.success;
     finishText = 'Excellent!';
     document.body.classList.add('success');
   } else {
     finishAudio = finishGameAudio.failure;
-    finishText = (errorsForGame == 1) ? 'One error' : `${errorsForGame} errors`;
+    finishText = (errorsForGame === 1) ? 'One error' : `${errorsForGame} errors`;
     document.body.classList.add('failure');
   }
   cardContainers.forEach((card) => {
@@ -194,7 +194,7 @@ function changeLocation() {
 function getSrcAudio(currentCardContainer) {
   let containerIndex = null;
   cardContainers.forEach((card, index) => {
-    if (card == currentCardContainer) containerIndex = index;
+    if (card === currentCardContainer) containerIndex = index;
   });
   const src = currentCardsGroup[containerIndex].audioSrc;
   return src;

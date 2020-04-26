@@ -4,6 +4,7 @@ const titlePage = titleCards[0];
 const isReloadingPage = (performance.navigation.type == 1);
 const isTrainMode = JSON.parse(sessionStorage.getItem('isTrainMode'));
 const numberCardsGroup = sessionStorage.getItem('cardsGroup');
+const burgerLinesNumber = 3;
 
 createHeader();
 
@@ -45,7 +46,7 @@ function createHeader() {
   divBurger.classList.add('burger-button');
   divBurger.setAttribute('id', 'burger-button');
 
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < burgerLinesNumber; i++) {
     const div = document.createElement('div');
     div.classList.add('burger-line');
     divBurger.append(div);
