@@ -103,7 +103,14 @@ function createHeader() {
 
   nav.append(ul);
 
-  divHeader.append(divBurger, divBurgerOverlay, checkbox, label, nav);
+  if (isFinite(Number(numberCardsGroup))) {
+    let nameSelectedGroup = document.createElement('p');
+    nameSelectedGroup.classList.add('selected-group');
+    nameSelectedGroup.textContent = titlePage[numberCardsGroup];
+    divHeader.append(divBurger, divBurgerOverlay, nameSelectedGroup, checkbox, label, nav);
+  } else {
+    divHeader.append(divBurger, divBurgerOverlay, checkbox, label, nav);
+  }
 
   header.append(divHeader);
   document.body.prepend(header);
