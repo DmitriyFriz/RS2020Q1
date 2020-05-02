@@ -1,0 +1,12 @@
+.main-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (max-width: 1399px) {
+
+  .main-wrapper {
+    padding: 0 20px;
+  }
+}

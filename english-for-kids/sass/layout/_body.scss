@@ -1,0 +1,29 @@
+body {
+  background-color: #f8f8f8;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: #2d303a;
+}
+
+.success, .failure {
+  background-repeat: no-repeat;
+  background-size: 600px;
+  background-position: 50%;
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+.success {
+  background-image: url(/src/assets/img/success.jpg);
+}
+
+.failure {
+  background-image: url(/src/assets/img/failure.jpg);
+}
+
+@media (max-width: 767px) {
+
+  .success, .failure {
+    background-size: 75%;
+  }
+}
