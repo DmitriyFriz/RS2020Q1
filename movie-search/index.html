@@ -1,48 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Movie Search</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap&subset=cyrillic" rel="stylesheet">
-	<link rel="stylesheet" href="./src/style/style.css">
+  <link rel="stylesheet" href="./src/style/style.css">
 </head>
 <body>
-  <div class="app-wr">
-  <header class="header">
-    <h1>Movie Search</h1>
-  </header>
-  <main class="main-wrapper">
-    <form class="search-form" id="search-form" onsubmit="return false">
-        <div class="search-wrapper">
-          <input type="text" class="search-input" id="search-input" name="search-input" autocomplete="off">
-          <div class="clear-button" id="clear-button"></div>
-        </div>
-        <button class="search-button" id="search-button">Search</button>
-    </form>
-    <div class="swiper-container">
-      <div class="swiper-wrapper"></div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-    </div>
-  </main>
-  <div class="preloader-wrapper">
-    <div class="preloader-spinner">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+  <div class="app-wrapper">
+    <header class="header">
+      <h1>Movie Search</h1>
+    </header>
+    <main class="main-wrapper">
+      <form class="search-form" id="search-form" onsubmit="return false">
+          <div class="search-wrapper">
+            <input type="text" class="search-input" id="search-input" name="search-input" autocomplete="off" placeholder="Search Movie..." autofocus>
+            <div class="clear-button" id="clear-button"></div>
+          </div>
+          <button class="search-button" id="search-button">Search</button>
+      </form>
+      <p class="search-result" id="search-result"></p>
+      <div class="swiper-container">
+        <div class="swiper-wrapper"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer-wrapper">
+        <a class="school-name" href="https://rs.school/">RS School 2020q1</a>
+        <a class="github-src" href="https://github.com/DmitriyFriz">Dmitriy Friz</a>
+      </div>
+    </footer>
   </div>
-  </div>
+    <div class="preloader-wrapper">
+      <div class="preloader-spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
 	<script src="./src/js/script.js" type="module"></script>
 </body>
 </html>
