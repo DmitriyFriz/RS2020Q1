@@ -1,4 +1,4 @@
-import Swiper from './swiper.esm.browser.bundle.min.js';
+import Swiper from './swiper.min.js';
 import { getTranslate, getMovieTitle, getMovieRating } from './api.services.js';
 
 const searchForm = document.getElementById('search-form');
