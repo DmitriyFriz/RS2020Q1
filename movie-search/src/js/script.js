@@ -1,5 +1,7 @@
+import '../style/style.css';
 import Swiper from './swiper.min.js';
 import { getTranslate, getMovieTitle, getMovieRating } from './api.services.js';
+import posterDefault from '../assets/img/poster-default.png';
 
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
@@ -8,7 +10,6 @@ const clearButton = document.getElementById('clear-button');
 const searchResult = document.getElementById('search-result');
 const swiperWrapper = document.querySelector('.swiper-wrapper');
 const preloader = document.querySelector('.preloader-wrapper');
-const posterDefault = './src/assets/img/poster-default.png';
 const regExpRussian = /[а-я]/i;
 let requestPage = 1;
 let totalPage = 1;
