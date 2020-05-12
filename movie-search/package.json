@@ -9,7 +9,7 @@
   "scripts": {
     "style": "sass --watch sass/style.scss sass/style.css",
     "lint": "eslint ./src/",
-    "lint:fix": "eslint . --fix",
+    "lint:fix": "eslint ./src/ --fix",
     "dev": "webpack-dev-server --history-api-fallback --inline --open",
     "build": "npm run clear -s && webpack --progress",
     "clear": "del-cli dist"

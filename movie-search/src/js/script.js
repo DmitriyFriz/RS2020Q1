@@ -25,6 +25,7 @@ const errorTypes = {
 const movieSwiper = new Swiper('.swiper-container', {
   slidesPerView: 1,
   spaceBetween: 20,
+  speed: 500,
   pagination: {
     el: '.swiper-pagination',
     clickable: true,
@@ -92,7 +93,6 @@ function creatMovieSlide(id, title, posterSrc, year, rating) {
   const posterMovie = document.createElement('div');
   posterMovie.classList.add('movie-poster');
   const poster = (posterSrc === 'N/A') ? posterDefault : posterSrc;
-  posterMovie.style.backgroundImage = `url(${poster})`;
 
   const yearMovie = document.createElement('p');
   yearMovie.textContent = year;
@@ -101,11 +101,16 @@ function creatMovieSlide(id, title, posterSrc, year, rating) {
   ratingMovie.classList.add('movie-rating');
   ratingMovie.textContent = rating;
 
-  card.append(titleMovie, posterMovie, yearMovie, ratingMovie);
-
-  slide.append(card);
-
-  return slide;
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.src = poster;
+    posterMovie.style.backgroundImage = `url(${img.src})`;
+    card.append(titleMovie, posterMovie, yearMovie, ratingMovie);
+    slide.append(card);
+    img.addEventListener('load', () => {
+      resolve(slide);
+    });
+  });
 }
 
 function searchMovieInfo() {
@@ -130,19 +135,22 @@ function searchMovieInfo() {
       const movieArr = data.Search;
       const movieRating = Promise.all(movieArr.map((movie) => getMovieRating(movie.imdbID)));
       return Promise.all([movieArr, movieRating]);
-    })
-    .finally(() => preloader.classList.remove('visibility'));
+    });
 }
 
 function handelMovieInfo(data) {
-  if (requestPage === 1) {
-    swiperWrapper.innerHTML = '';
-    movieSwiper.slideTo(0);
-  }
   const [movieArr, movieRating] = data;
-  const movieSlides = movieArr.map((movie, index) => creatMovieSlide(movie.imdbID, movie.Title, movie.Poster, movie.Year, movieRating[index]));
-  movieSwiper.appendSlide(movieSlides);
-  if (wasTranslate) searchResult.textContent = `Showing results for "${movieName}"`;
+  const movieSlides = Promise.all(movieArr.map((movie, index) => creatMovieSlide(movie.imdbID, movie.Title, movie.Poster, movie.Year, movieRating[index])));
+  movieSlides
+    .then((slides) => {
+      if (requestPage === 1) {
+        swiperWrapper.innerHTML = '';
+        movieSwiper.slideTo(0, false);
+      }
+      movieSwiper.appendSlide(slides);
+      if (wasTranslate) searchResult.textContent = `Showing results for "${movieName}"`;
+      preloader.classList.remove('visibility');
+    });
 }
 
 function handelMovieError(error) {
@@ -160,4 +168,5 @@ function handelMovieError(error) {
     default:
       break;
   }
+  preloader.classList.remove('visibility');
 }

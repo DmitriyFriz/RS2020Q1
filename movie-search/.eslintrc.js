@@ -16,7 +16,7 @@ module.exports = {
     "import/extensions" : "off",
     "no-use-before-define": "off",
     "no-alert": "off",
-    "max-len": ["error", { "code": 150 }]
+    "max-len": ["error", { "code": 170 }]
   },
 };
 
