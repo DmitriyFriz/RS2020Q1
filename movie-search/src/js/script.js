@@ -11,6 +11,8 @@ const searchResult = document.getElementById('search-result');
 const swiperWrapper = document.querySelector('.swiper-wrapper');
 const preloader = document.querySelector('.preloader-wrapper');
 const regExpRussian = /[а-я]/i;
+const noPoster = 'N/A';
+const ErrorResponse = 'False';
 let requestPage = 1;
 let totalPage = 1;
 let movieName = 'Harry';
@@ -92,7 +94,7 @@ function creatMovieSlide(id, title, posterSrc, year, rating) {
 
   const posterMovie = document.createElement('div');
   posterMovie.classList.add('movie-poster');
-  const poster = (posterSrc === 'N/A') ? posterDefault : posterSrc;
+  const poster = (posterSrc === noPoster) ? posterDefault : posterSrc;
 
   const yearMovie = document.createElement('p');
   yearMovie.textContent = year;
@@ -130,7 +132,7 @@ function searchMovieInfo() {
   return searchRequest
     .then((data) => getMovieTitle(data, requestPage))
     .then((data) => {
-      if (data.Response === 'False') return Promise.reject(data.Error);
+      if (data.Response === ErrorResponse) return Promise.reject(data.Error);
       totalPage = Math.ceil(data.totalResults / 10);
       const movieArr = data.Search;
       const movieRating = Promise.all(movieArr.map((movie) => getMovieRating(movie.imdbID)));

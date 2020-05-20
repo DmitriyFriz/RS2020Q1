@@ -5,6 +5,8 @@ const keys = {
   movieAPI: '91aeb627',
 };
 
+const omdb = 'https://www.omdbapi.com';
+
 function getTranslate(request) {
   const url = `https://translate.yandex.net/api/v1.5/tr.json/translate?key=${keys.translateAPI}&text=${request}&lang=ru-en`;
 
@@ -14,14 +16,14 @@ function getTranslate(request) {
 }
 
 function getMovieTitle(request, page) {
-  const url = `https://www.omdbapi.com/?s=${request}&page=${page}&apikey=${keys.movieAPI}`;
+  const url = `${omdb}/?s=${request}&page=${page}&apikey=${keys.movieAPI}`;
 
   return fetch(url)
     .then((response) => response.json());
 }
 
 function getMovieRating(MovieId) {
-  const url = `https://www.omdbapi.com/?i=${MovieId}&apikey=${keys.movieAPI}`;
+  const url = `${omdb}/?i=${MovieId}&apikey=${keys.movieAPI}`;
 
   return fetch(url)
     .then((response) => response.json())
