@@ -1,0 +1,49 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  line-height: 20px;
+}
+
+.drop-state {
+  background-color: $color-primary;
+  padding: 12px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+
+  background-image: url(../../assets/img/arrow-drop.svg);
+  background-size: 15px 15px;
+  background-repeat: no-repeat;
+  background-position: 50px center;
+}
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  width: 100%;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  cursor: pointer;
+}
+
+.drop-button {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color: $color-secondary;
+
+  &:last-child {
+    border-radius: 0 0 5px 5px;
+  }
+
+  &:hover {
+    background-color: $color-primary;
+  }
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
