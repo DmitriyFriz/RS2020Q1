@@ -1,31 +1,11 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  height: 100%;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-input, button, form {
-  font: inherit;
-  color: inherit;
-  border: none;
-  outline: none;
-  background-color: inherit;
-}
-
-//
+@import './base/reset';
 @import './abstract/constants';
 @import './layout/body';
 @import './layout/app';
 @import './layout/header';
+@import './layout/main';
+@import './layout/sections';
 @import './components/dropdown';
 @import './components/button';
 @import './components/input';
+@import './components/weather';

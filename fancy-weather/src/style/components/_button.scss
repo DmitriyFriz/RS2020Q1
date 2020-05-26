@@ -17,8 +17,7 @@
   margin-right: 12px;
 }
 
-.button-degree {
-
+.button-units {
   background-color: $color-secondary;
 
   &:nth-child(3) {
@@ -31,7 +30,7 @@
   }
 }
 
-.degree-active {
+.units-active {
   background-color: $color-primary;
 
   &:hover {

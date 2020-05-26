@@ -21,8 +21,8 @@
             <li class="drop-button">BE</li>
           </ul>
         </div>
-        <button class="button button-degree">&deg;F</button>
-        <button class="button button-degree degree-active">&deg;C</button>
+        <button class="button button-units">&deg;F</button>
+        <button class="button button-units units-active">&deg;C</button>
       </div>
       <form class="search-form" id="search-form" onsubmit="return false">
         <div class="search-wrapper">
@@ -32,8 +32,49 @@
         <button class="search-button" id="search-button">Search</button>
       </form>
     </header>
-
-
+    <main class="main">
+      <section class="weather-section">
+        <div class="location">Minsk, Belarus</div>
+        <span class="current-day">mon 28 october</span>
+        <span class="current-time">17:23:12</span>
+        <div class="weather-today">
+            <p class="temperature-today"><span id="temperature-today">10</span>&deg;</p>
+            <div class="summary-weather">
+              <img class="today-weather-icon" src="./assets/img/rain.svg" alt="wether-icon">
+              <div class="text-info">
+                <p id="description-weather">overcast</p>
+                <p>Feels like: <span id="feel-like">7</span>°</p>
+                <p>Wind: <span id="wind">2</span>m/s</p>
+                <p>Humidity: <span id="humidity">83</span>%</p>
+              </div>
+            </div>
+        </div>
+        <div class="weather-future">
+          <div class="forecast-card">
+            <p class="future-weekday text-info">Tuesday</p>
+            <div class="forecast-info">
+              <p class="temperature-forecast"><span id="temperature-forecast">10</span>&deg;</p>
+              <img class="forecast-icon" src="./assets/img/rain.svg" alt="forecast-icon">
+            </div>
+          </div>
+          <div class="forecast-card">
+            <p class="future-weekday text-info">Tuesday</p>
+            <div class="forecast-info">
+              <p class="temperature-forecast"><span id="temperature-forecast">10</span>&deg;</p>
+              <img class="forecast-icon" src="./assets/img/rain.svg" alt="forecast-icon">
+            </div>
+          </div>
+          <div class="forecast-card">
+            <p class="future-weekday text-info">Tuesday</p>
+            <div class="forecast-info">
+              <p class="temperature-forecast"><span id="temperature-forecast">10</span>&deg;</p>
+              <img class="forecast-icon" src="./assets/img/rain.svg" alt="forecast-icon">
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="map-section"></section>
+    </main>
   </div>
 </body>
 </html>

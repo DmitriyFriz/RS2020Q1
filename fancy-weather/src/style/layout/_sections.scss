@@ -1,0 +1,19 @@
+.weather-section{
+  max-width: 670px;
+  width: 100%;
+}
+
+// .map-section {
+//   height: 460px;
+//   width: 100%;
+//   background-color: red;
+// }
+
+@media (max-width: 767px) {
+
+  .weather-section {
+    text-align: center;
+  }
+
+}
+
