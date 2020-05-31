@@ -1,4 +1,4 @@
-import dataTranslate from './translate.data.js';
+import dataTranslate from './data/translate.data.js';
 
 class LocalDate {
   constructor({ currentDay, currentTime, futureWeekdays }) {

@@ -1,3 +1,5 @@
+import dataTranslate from './data/translate.data.js';
+
 export { getLocationData, getCoordinateData };
 
 const opencageKey = '23e52a2d9b934240a2f92b890c311ee7';
@@ -8,6 +10,8 @@ async function getLocationData(location, language) {
 
   const response = await fetch(url);
   const json = await response.json();
+
+  if (json.total_results === 0) throw new Error(dataTranslate.SearchError[language]);
 
   const locationData = json.results[0];
   return handleLocationData(locationData);

@@ -43,9 +43,18 @@
               <img class="today-weather-icon" src="./assets/img/rain.svg" alt="wether-icon">
               <div class="text-info">
                 <p id="description-weather">overcast</p>
-                <p>Feels like: <span id="feel-like">7</span>°</p>
-                <p>Wind: <span id="wind">2</span>m/s</p>
-                <p>Humidity: <span id="humidity">83</span>%</p>
+                <p>
+                  <span data-summary-weather>Feels like: </span>
+                  <span id="feels-like">7</span>&deg;
+                </p>
+                <p>
+                  <span data-summary-weather>Wind: </span>
+                  <span id="wind-spd">2</span><span data-summary-weather>m/s</span>
+                </p>
+                <p>
+                  <span data-summary-weather>Humidity:</span>
+                  <span id="humidity">83</span>%
+                </p>
               </div>
             </div>
         </div>
@@ -53,28 +62,30 @@
           <div class="forecast-card">
             <p class="future-weekday text-info">Tuesday</p>
             <div class="forecast-info">
-              <p class="temperature-forecast"><span id="temperature-forecast">10</span>&deg;</p>
+              <p class="temperature-forecast"><span data-temperature-forecast>10</span>&deg;</p>
+              <img class="forecast-icon" src="./assets/img/weather/partly-cloudy-day-rain.svg" alt="forecast-icon">
+            </div>
+          </div>
+          <div class="forecast-card">
+            <p class="future-weekday text-info">Tuesday</p>
+            <div class="forecast-info">
+              <p class="temperature-forecast"><span data-temperature-forecast>10</span>&deg;</p>
               <img class="forecast-icon" src="./assets/img/rain.svg" alt="forecast-icon">
             </div>
           </div>
           <div class="forecast-card">
             <p class="future-weekday text-info">Tuesday</p>
             <div class="forecast-info">
-              <p class="temperature-forecast"><span id="temperature-forecast">10</span>&deg;</p>
-              <img class="forecast-icon" src="./assets/img/rain.svg" alt="forecast-icon">
-            </div>
-          </div>
-          <div class="forecast-card">
-            <p class="future-weekday text-info">Tuesday</p>
-            <div class="forecast-info">
-              <p class="temperature-forecast"><span id="temperature-forecast">10</span>&deg;</p>
-              <img class="forecast-icon" src="./assets/img/rain.svg" alt="forecast-icon">
+              <p class="temperature-forecast"><span data-temperature-forecast>10</span>&deg;</p>
+              <img class="forecast-icon" src="./assets/img/weather/clear-day.svg" alt="forecast-icon">
             </div>
           </div>
         </div>
       </section>
       <section class="map-section">
         <div class="map" id="map"></div>
+        <p class="coordinates"><span data-coordinates>Latitude:</span> <span id="lat">53</span></p>
+        <p class="coordinates"><span data-coordinates>Longitude:</span> <span id="lng">53</span></p>
       </section>
     </main>
   </div>
