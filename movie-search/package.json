@@ -1,0 +1,54 @@
+{
+  "name": "movie-search",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "browserslist": [
+    "> 0.25%, not dead"
+  ],
+  "scripts": {
+    "style": "sass --watch sass/style.scss sass/style.css",
+    "lint": "eslint ./src/",
+    "lint:fix": "eslint ./src/ --fix",
+    "dev": "webpack-dev-server --history-api-fallback --inline --open",
+    "build": "npm run clear -s && webpack --progress",
+    "clear": "del-cli dist"
+  },
+  "author": "DmitriyFriz",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "autoprefixer": "^9.7.6",
+    "babel-loader": "^8.1.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.5.3",
+    "css-mqpacker": "^7.0.0",
+    "cssnano": "^4.1.10",
+    "del-cli": "^3.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-html": "^6.0.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-prettier": "^3.1.2",
+    "file-loader": "^6.0.0",
+    "html-loader": "^1.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "image-webpack-loader": "^6.0.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "postcss-loader": "^3.0.0",
+    "prettier": "^2.0.4",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "regenerator-runtime": "^0.13.5",
+    "swiper": "^5.3.8"
+  }
+}
