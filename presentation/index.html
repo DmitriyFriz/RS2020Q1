@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>TypeScript Presentation</title>
+		<link rel="stylesheet" href="reveal/reset.css">
+		<link rel="stylesheet" href="reveal/reveal.css">
+		<link rel="stylesheet" href="reveal/theme/serif.css" id="theme">
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+    <link rel="stylesheet" href="sass/style.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-state="slide-1">
+          <h1>TypeScript</h1>
+        </section>
+        <section data-state="slide-2">
+          <h3>Features of TypeScript</h3>
+          <ul>
+            <li>TypeScript is just JavaScript</li>
+            <li>TypeScript supports other JS libraries</li>
+            <li>JavaScript is TypeScript</li>
+            <li>TypeScript is portable</li>
+          </ul>
+          <h4>TypeScript and ECMAScript</h4>
+          <img src="./assets/img/ts-ecmascript.jpg" alt="TypeScript and ECMAScript">
+        </section>
+        <section>
+          <section>
+            <p>Boolean</p>
+            <pre>
+              <code data-trim data-noescape>
+                let isDone: boolean = false;
+              </code>
+            </pre>
+            <p>Number</p>
+            <pre>
+              <code data-trim data-noescape>
+                let decimal: number = 6;
+                let hex: number = 0xf00d;
+                let binary: number = 0b1010;
+              </code>
+            </pre>
+          </section>
+          <section>
+            <p>String</p>
+            <pre>
+              <code data-trim data-noescape>
+                const color: string = 'blue';
+              </code>
+            </pre>
+            <p>Array</p>
+            <pre>
+              <code data-trim data-noescape>
+                let list: number[] = [1, 2, 3];
+                let list: Array<number> = [1, 2, 3];
+              </code>
+            </pre>
+          </section>
+          <section>
+            <p>Tuple</p>
+            <pre>
+              <code data-trim data-noescape>
+                let x: [string, number];
+                // Initialize it
+                x = ["hello", 10]; // OK
+              </code>
+            </pre>
+            <p>Any</p>
+            <pre>
+              <code data-trim data-noescape>
+                let notSure: any = 4;
+                notSure = "maybe a string instead";
+                notSure = false; // okay, definitely a boolean
+              </code>
+            </pre>
+          </section>
+          <section>
+            <p>Enum</p>
+            <pre>
+              <code data-trim data-noescape>
+                enum Color {Red, Green, Blue}
+                let c: Color = Color.Green;
+              </code>
+            </pre>
+            <p>Void</p>
+            <pre>
+              <code data-trim data-noescape>
+                function warnUser(): void {
+                  console.log("This is my warning message");
+                }
+              </code>
+            </pre>
+          </section>
+        </section>
+        <section data-state="slide-4">
+          <h4>Components of TypeScript</h4>
+          <img class="ts-components" src="./assets/img/ts-components.jpg" alt="TypeScript Components">
+          <h4>TypeScript compiler (TSC) </h4>
+          <img src="./assets/img/ts-compiler.png" alt="TypeScript compiler (TSC)">
+        </section>
+        <section data-state="slide-5">
+          <h3>General TypeScript Advantages</h3>
+          <ul>
+            <li>TypeScript is an open-source language</li>
+            <li>TypeScript runs on any browser or JavaScript engine</li>
+            <li>TypeScript is similar to JavaScript and uses the same syntax and semantics</li>
+            <li>TypeScript is also closer in syntax to back-end languages like Java and Scala</li>
+            <li>TypeScript has support for the latest JavaScript features from ECMAScript 2015</li>
+          </ul>
+          <h4>TypeScript is JavaScript that scales!</h4>
+        </section>
+
+			</div>
+		</div>
+
+		<script src="reveal/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			Reveal.initialize({
+        hash: true,
+        controls: true,
+        center: false,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
