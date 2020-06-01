@@ -9,7 +9,6 @@
 </head>
 <body>
   <div class="app-wrapper">
-
     <header class="header">
       <div class="button-group">
         <button class="button button-update"></button>
@@ -21,8 +20,10 @@
             <li class="drop-button">BE</li>
           </ul>
         </div>
-        <button class="button button-units">&deg;F</button>
-        <button class="button button-units units-active">&deg;C</button>
+        <div  class="units-group">
+          <button class="button button-units" data-value="F">&deg;F</button>
+          <button class="button button-units" data-value="C">&deg;C</button>
+        </div>
       </div>
       <form class="search-form" id="search-form" onsubmit="return false">
         <div class="search-wrapper">
@@ -40,7 +41,7 @@
         <div class="weather-today">
             <p class="temperature-today"><span id="temperature-today">10</span>&deg;</p>
             <div class="summary-weather">
-              <img class="today-weather-icon" src="./assets/img/rain.svg" alt="wether-icon">
+              <img class="today-weather-icon" src="./assets/img/weather/clear-day.svg" alt="wether-icon">
               <div class="text-info">
                 <p id="description-weather">overcast</p>
                 <p>
@@ -63,14 +64,14 @@
             <p class="future-weekday text-info">Tuesday</p>
             <div class="forecast-info">
               <p class="temperature-forecast"><span data-temperature-forecast>10</span>&deg;</p>
-              <img class="forecast-icon" src="./assets/img/weather/partly-cloudy-day-rain.svg" alt="forecast-icon">
+              <img class="forecast-icon" src="./assets/img/weather/clear-day.svg" alt="forecast-icon">
             </div>
           </div>
           <div class="forecast-card">
             <p class="future-weekday text-info">Tuesday</p>
             <div class="forecast-info">
               <p class="temperature-forecast"><span data-temperature-forecast>10</span>&deg;</p>
-              <img class="forecast-icon" src="./assets/img/rain.svg" alt="forecast-icon">
+              <img class="forecast-icon" src="./assets/img/weather/clear-day.svg" alt="forecast-icon">
             </div>
           </div>
           <div class="forecast-card">
@@ -83,7 +84,7 @@
         </div>
       </section>
       <section class="map-section">
-        <div class="map" id="map"></div>
+        <div class="map mask" id="map"></div>
         <p class="coordinates"><span data-coordinates>Latitude:</span> <span id="lat">53</span></p>
         <p class="coordinates"><span data-coordinates>Longitude:</span> <span id="lng">53</span></p>
       </section>

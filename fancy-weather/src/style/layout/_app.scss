@@ -4,5 +4,11 @@
 	position: relative;
   margin: 0 auto;
   padding: 40px 10px;
+  opacity: 0;
+  transition: 2s;
+}
+
+.app-opacity {
+  opacity: 1;
 }
 

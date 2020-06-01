@@ -8,6 +8,7 @@ import weatherIcons from './data/weather.icon.js';
 
 const searchInput = document.getElementById('search-input');
 const searchButton = document.getElementById('search-button');
+const searchForm = document.getElementById('search-form');
 const latContainer = document.getElementById('lat');
 const lngContainer = document.getElementById('lng');
 const temperatureToday = document.getElementById('temperature-today');
@@ -24,40 +25,78 @@ const locationContainer = document.querySelector('.location');
 const summaryWeather = document.querySelectorAll('[data-summary-weather]');
 const temperatureForecast = document.querySelectorAll('[data-temperature-forecast]');
 const forecastIcon = document.querySelectorAll('.forecast-icon');
+const appWrapper = document.querySelector('.app-wrapper');
+
+const unitsGroup = document.querySelector('.units-group');
+const unitButtons = document.querySelectorAll('.button-units');
+const degreeC = 'C';
+const degreeF = 'F';
+let unit = localStorage.getItem('unitWeather');
+unit = (unit === null) ? degreeC : unit;
 
 const languagePage = 'en';
+
+let currentWeather = null;
+let forecastWeather = null;
+let locationData = null;
 
 const localDate = new LocalDate({ currentDay, currentTime, futureWeekdays });
 
 async function init() {
-  const locationCoordinate = await getPosition();
-  const locationData = await getCoordinateData(locationCoordinate, languagePage);
+  try {
+    setFirstSettings(unit);
 
-  localDate.timeZone = locationData.timeZone;
-  setInterval(localDate.setTime.bind(localDate), 1000);
+    const locationCoordinate = await getPosition();
 
-  updatePageData(locationData);
+    locationData = await getCoordinateData(locationCoordinate, languagePage);
+    currentWeather = await getCurrentWeather(locationData);
+    forecastWeather = await getForecastWeather(locationData);
 
-  const currentWeather = await getCurrentWeather(locationData);
-  const forecastWeather = await getForecastWeather(locationData);
-  updatePageWeather(currentWeather, forecastWeather, languagePage);
+    localDate.timeZone = locationData.timeZone;
+    setInterval(localDate.setTime.bind(localDate), 1000);
+
+    updatePageData(locationData);
+    updatePageWeather({
+      currentWeather,
+      forecastWeather,
+      language: languagePage,
+      unit,
+    });
+  } catch (error) {
+    alert(error);
+  } finally {
+    appWrapper.classList.add('app-opacity');
+  }
 }
 
 searchButton.addEventListener('click', async () => {
   const location = searchInput.value.trim();
   if (location.length) {
     try {
-      const locationData = await getLocationData(location, languagePage);
-      updatePageData(locationData);
+      locationData = await getLocationData(location, languagePage);
+      currentWeather = await getCurrentWeather(locationData);
+      forecastWeather = await getForecastWeather(locationData);
 
-      const currentWeather = await getCurrentWeather(locationData);
-      const forecastWeather = await getForecastWeather(locationData);
-      updatePageWeather(currentWeather, forecastWeather, languagePage);
+      updatePageData(locationData);
+      updatePageWeather({
+        currentWeather,
+        forecastWeather,
+        language: languagePage,
+        unit,
+      });
+      searchForm.reset();
     } catch (error) {
       alert(error);
     }
   }
 });
+
+function setFirstSettings(unit) {
+  unitButtons.forEach((item) => {
+    const button = item;
+    if (button.dataset.value === unit) button.classList.add('units-active');
+  });
+}
 
 function updatePageData(locationData) {
   locationContainer.textContent = locationData.locationName;
@@ -69,19 +108,72 @@ function updatePageData(locationData) {
   localDate.setFutureWeekdays();
 }
 
-function updatePageWeather(currentWeather, forecastWeather, language) {
+function updatePageWeather({
+  currentWeather, forecastWeather, language, unit,
+}) {
   descriptionWeather.textContent = weatherTranslate[language][currentWeather.code];
-  temperatureToday.textContent = currentWeather.temperature;
-  feelsLike.textContent = currentWeather.feelsLike;
+  let temperature = Number(currentWeather.temperature);
+  let feelTemperature = Number(currentWeather.feelsLike);
+  if (unit === degreeF) {
+    temperature = convertToFahrenheit(temperature);
+    feelTemperature = convertToFahrenheit(feelTemperature);
+  }
+  temperatureToday.textContent = temperature;
+  feelsLike.textContent = feelTemperature;
   windSpd.textContent = currentWeather.windSpd;
   humidity.textContent = currentWeather.humidity;
   todayWeatherIcon.src = weatherIcons[currentWeather.icon];
 
   temperatureForecast.forEach((item, index) => {
     const temperatureContainer = item;
-    temperatureContainer.textContent = forecastWeather[index].temperature;
+    let temperature = Number(forecastWeather[index].temperature);
+    if (unit === degreeF) {
+      temperature = convertToFahrenheit(temperature);
+    }
+    temperatureContainer.textContent = temperature;
     forecastIcon[index].src = weatherIcons[forecastWeather[index].icon];
   });
+}
+
+unitsGroup.addEventListener('click', (event) => {
+  const selectedButton = event.target;
+  if (!selectedButton.classList.contains('units-active')) {
+    unit = selectedButton.dataset.value;
+    localStorage.setItem('unitWeather', unit);
+    unitButtons.forEach((item) => {
+      const button = item;
+      button.classList.remove('units-active');
+    });
+    selectedButton.classList.add('units-active');
+    changeTemperature({
+      currentWeather,
+      forecastWeather,
+      unit,
+    });
+  }
+});
+
+function changeTemperature({ currentWeather, forecastWeather, unit }) {
+  let temperature = Number(currentWeather.temperature);
+  let feelTemperature = Number(currentWeather.feelsLike);
+  if (unit === degreeF) {
+    temperature = convertToFahrenheit(temperature);
+    feelTemperature = convertToFahrenheit(feelTemperature);
+  }
+  temperatureToday.textContent = temperature;
+  feelsLike.textContent = feelTemperature;
+  temperatureForecast.forEach((item, index) => {
+    const temperatureContainer = item;
+    let temperature = Number(forecastWeather[index].temperature);
+    if (unit === degreeF) {
+      temperature = convertToFahrenheit(temperature);
+    }
+    temperatureContainer.textContent = temperature;
+  });
+}
+
+function convertToFahrenheit(temperature) {
+  return Math.round(temperature * (9 / 5) + 32);
 }
 
 init();

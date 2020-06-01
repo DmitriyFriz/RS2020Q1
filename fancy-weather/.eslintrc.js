@@ -15,6 +15,7 @@ module.exports = {
     }
   },
   rules: {
+    "no-shadow": "off",
     "no-plusplus": "off",
     "eqeqeq": "off",
     "import/extensions" : "off",
