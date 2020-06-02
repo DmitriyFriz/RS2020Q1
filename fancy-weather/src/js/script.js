@@ -5,6 +5,7 @@ import { getLocationData, getCoordinateData } from './geocoding.js';
 import { getCurrentWeather, getForecastWeather } from './weather.js';
 import weatherTranslate from './data/weather.translate.js';
 import weatherIcons from './data/weather.icon.js';
+import dataTranslate from './data/translate.data.js';
 
 const searchInput = document.getElementById('search-input');
 const searchButton = document.getElementById('search-button');
@@ -23,28 +24,33 @@ const currentDay = document.querySelector('.current-day');
 const futureWeekdays = document.querySelectorAll('.future-weekday');
 const locationContainer = document.querySelector('.location');
 const summaryWeather = document.querySelectorAll('[data-summary-weather]');
+const latLngSignature = document.querySelectorAll('[data-coordinates]');
 const temperatureForecast = document.querySelectorAll('[data-temperature-forecast]');
 const forecastIcon = document.querySelectorAll('.forecast-icon');
 const appWrapper = document.querySelector('.app-wrapper');
 
-const unitsGroup = document.querySelector('.units-group');
-const unitButtons = document.querySelectorAll('.button-units');
 const degreeC = 'C';
 const degreeF = 'F';
 let unit = localStorage.getItem('unitWeather');
 unit = (unit === null) ? degreeC : unit;
+const unitsGroup = document.querySelector('.units-group');
+const unitButtons = document.querySelectorAll('.button-units');
 
-const languagePage = 'en';
+const defaultLanguage = 'en';
+let languagePage = localStorage.getItem('languageWeather');
+languagePage = (languagePage === null) ? defaultLanguage : languagePage;
+const dropState = document.querySelector('.drop-state');
+const dropGroup = document.querySelector('.dropdown-content');
+const dropButtons = document.querySelectorAll('.drop-button');
 
 let currentWeather = null;
 let forecastWeather = null;
 let locationData = null;
-
 const localDate = new LocalDate({ currentDay, currentTime, futureWeekdays });
 
 async function init() {
   try {
-    setFirstSettings(unit);
+    setFirstSettings(unit, languagePage);
 
     const locationCoordinate = await getPosition();
 
@@ -53,6 +59,7 @@ async function init() {
     forecastWeather = await getForecastWeather(locationData);
 
     localDate.timeZone = locationData.timeZone;
+    localDate.language = languagePage;
     setInterval(localDate.setTime.bind(localDate), 1000);
 
     updatePageData(locationData);
@@ -91,11 +98,18 @@ searchButton.addEventListener('click', async () => {
   }
 });
 
-function setFirstSettings(unit) {
+function setFirstSettings(unit, language) {
   unitButtons.forEach((item) => {
     const button = item;
     if (button.dataset.value === unit) button.classList.add('units-active');
   });
+
+  setLanguageStaticElements(language);
+  dropButtons.forEach((item) => {
+    const button = item;
+    if (button.dataset.language === language) button.classList.add('drop-button-active');
+  });
+  dropState.textContent = language.toUpperCase();
 }
 
 function updatePageData(locationData) {
@@ -145,7 +159,7 @@ unitsGroup.addEventListener('click', (event) => {
       button.classList.remove('units-active');
     });
     selectedButton.classList.add('units-active');
-    changeTemperature({
+    changeTemperatureUnits({
       currentWeather,
       forecastWeather,
       unit,
@@ -153,7 +167,7 @@ unitsGroup.addEventListener('click', (event) => {
   }
 });
 
-function changeTemperature({ currentWeather, forecastWeather, unit }) {
+function changeTemperatureUnits({ currentWeather, forecastWeather, unit }) {
   let temperature = Number(currentWeather.temperature);
   let feelTemperature = Number(currentWeather.feelsLike);
   if (unit === degreeF) {
@@ -174,6 +188,48 @@ function changeTemperature({ currentWeather, forecastWeather, unit }) {
 
 function convertToFahrenheit(temperature) {
   return Math.round(temperature * (9 / 5) + 32);
+}
+
+dropGroup.addEventListener('click', (event) => {
+  const selectedButton = event.target;
+  if (!selectedButton.classList.contains('drop-button-active')) {
+    languagePage = selectedButton.dataset.language;
+    localStorage.setItem('languageWeather', languagePage);
+    dropButtons.forEach((item) => {
+      const button = item;
+      button.classList.remove('drop-button-active');
+    });
+    selectedButton.classList.add('drop-button-active');
+    dropState.textContent = languagePage.toUpperCase();
+    changePageLanguage(languagePage);
+  }
+});
+
+async function changePageLanguage(language) {
+  try {
+    locationData = await getCoordinateData(locationData, languagePage);
+    locationContainer.textContent = locationData.locationName;
+    localDate.language = language;
+    localDate.setDay();
+    localDate.setFutureWeekdays();
+    descriptionWeather.textContent = weatherTranslate[language][currentWeather.code];
+    setLanguageStaticElements(language);
+  } catch (error) {
+    alert(error);
+  }
+}
+
+function setLanguageStaticElements(language) {
+  searchButton.textContent = dataTranslate.buttonSearch[language];
+  searchInput.placeholder = dataTranslate.searchPlaceholder[languagePage];
+  latLngSignature.forEach((item, index) => {
+    const container = item;
+    container.textContent = dataTranslate.latLng[language][index];
+  });
+  summaryWeather.forEach((item, index) => {
+    const container = item;
+    container.textContent = dataTranslate.summaryWeather[language][index];
+  });
 }
 
 init();

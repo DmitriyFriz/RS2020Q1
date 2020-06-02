@@ -6,9 +6,9 @@ const dataTranslate = {
     be: 'Пошук',
   },
   searchPlaceholder: {
-    en: 'Search city',
-    ru: 'Поиск города',
-    be: 'Пошук горада',
+    en: 'Search city...',
+    ru: 'Поиск города...',
+    be: 'Пошук горада...',
   },
   latLng: {
     en: ['Latitude:', 'Longitude:'],
@@ -23,7 +23,7 @@ const dataTranslate = {
   longWeekday: {
     en: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
     ru: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
-    be: ['Нядзеля', 'Панядзелак', 'Аўторак', 'Серада', 'Чацвер', 'Пятніца', 'Субота'],
+    be: ['Нядзеля', 'Панядзелак', 'Аўторак', 'Серада', 'Чацверг', 'Пятніца', 'Субота'],
   },
   month: {
     en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],

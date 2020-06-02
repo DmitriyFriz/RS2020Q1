@@ -39,11 +39,26 @@
   }
 
   &:hover {
-    background-color: $color-primary;
+    background-color: $color-hover;
   }
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
+.drop-button-active {
+  background-color: $color-active-drop;
+  &:hover {
+    background-color: $color-active-drop;
+    cursor: default;
+  }
+}
+
+.dropdown:hover  {
+
+  .dropdown-content {
+    display: block;
+  }
+
+  .drop-state{
+    border-radius: 5px 5px 0 0;
+  }
 }
 
