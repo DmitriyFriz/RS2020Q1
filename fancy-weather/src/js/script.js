@@ -3,6 +3,7 @@ import getPosition from './geolocation.js';
 import LocalDate from './date.js';
 import { getLocationData, getCoordinateData } from './geocoding.js';
 import { getCurrentWeather, getForecastWeather } from './weather.js';
+import changeBackground from './background.js';
 import weatherTranslate from './data/weather.translate.js';
 import weatherIcons from './data/weather.icon.js';
 import dataTranslate from './data/translate.data.js';
@@ -27,7 +28,11 @@ const summaryWeather = document.querySelectorAll('[data-summary-weather]');
 const latLngSignature = document.querySelectorAll('[data-coordinates]');
 const temperatureForecast = document.querySelectorAll('[data-temperature-forecast]');
 const forecastIcon = document.querySelectorAll('.forecast-icon');
+
 const appWrapper = document.querySelector('.app-wrapper');
+const background = document.querySelector('.background');
+
+const updateBackgroundButton = document.querySelector('.button-update');
 
 const degreeC = 'C';
 const degreeF = 'F';
@@ -69,10 +74,12 @@ async function init() {
       language: languagePage,
       unit,
     });
+    changeBackground({ monthString: localDate.monthNumber, timeString: localDate.hour });
   } catch (error) {
     alert(error);
   } finally {
     appWrapper.classList.add('app-opacity');
+    background.classList.add('background-opacity');
   }
 }
 
@@ -92,6 +99,7 @@ searchButton.addEventListener('click', async () => {
         unit,
       });
       searchForm.reset();
+      changeBackground({ monthString: localDate.monthNumber, timeString: localDate.hour });
     } catch (error) {
       alert(error);
     }
@@ -231,5 +239,9 @@ function setLanguageStaticElements(language) {
     container.textContent = dataTranslate.summaryWeather[language][index];
   });
 }
+
+updateBackgroundButton.addEventListener('click', () => {
+  changeBackground({ monthString: localDate.monthNumber, timeString: localDate.hour });
+});
 
 init();

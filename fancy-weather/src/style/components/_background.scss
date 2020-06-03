@@ -1,0 +1,25 @@
+.background {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  position: fixed;
+  z-index: -1;
+  opacity: 0;
+  transition: background-image 1s linear, opacity 2s;
+}
+
+.background-gradient {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background: linear-gradient( rgba(9, 8, 23, 0.5) , rgba(15, 15, 45, 0.4)) fixed;
+  position: fixed;
+}
+
+.background-opacity {
+  opacity: 1;
+}

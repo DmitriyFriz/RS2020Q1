@@ -9,6 +9,7 @@ class LocalDate {
     this.timeZone = null;
     this.language = 'en';
     this.weekdayKeys = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    this.monthNumber = '1';
     this.weekdayFormat = {
       short: 'shortWeekday',
       long: 'longWeekday',
@@ -34,8 +35,8 @@ class LocalDate {
 
     const day = date.toLocaleString(this.locales, { day: 'numeric', timeZone: this.timeZone });
 
-    const monthNumber = date.toLocaleString(this.locales, { month: 'numeric', timeZone: this.timeZone }) - 1;
-    const month = dataTranslate.month[this.language][monthNumber];
+    this.monthNumber = date.toLocaleString(this.locales, { month: 'numeric', timeZone: this.timeZone }) - 1;
+    const month = dataTranslate.month[this.language][this.monthNumber];
 
     this.currentDay.textContent = `${weekday} ${day} ${month}`;
   }
@@ -55,6 +56,10 @@ class LocalDate {
     const weekday = date.toLocaleString(this.locales, { weekday: 'long', timeZone: this.timeZone });
     const weekdayNumber = this.weekdayKeys.indexOf(weekday);
     return dataTranslate[formatDay][this.language][weekdayNumber];
+  }
+
+  get hour() {
+    return new Date().toLocaleString(this.locales, { hour: 'numeric', timeZone: this.timeZone });
   }
 }
 
