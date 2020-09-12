@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fancy Weather</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="#">
+</head>
+<body>
+  <div class="background"></div>
+  <div class="background-gradient"></div>
+  <div class="app-wrapper">
+    <header class="header">
+      <div class="button-group">
+        <button class="button button-update"></button>
+        <div class="dropdown">
+          <div class="drop-state">EN</div>
+          <ul class="dropdown-content">
+            <li class="drop-button" data-language="en">EN</li>
+            <li class="drop-button" data-language="ru">RU</li>
+            <li class="drop-button" data-language="be">BE</li>
+          </ul>
+        </div>
+        <div  class="units-group">
+          <button class="button button-units" data-value="F">&deg;F</button>
+          <button class="button button-units" data-value="C">&deg;C</button>
+        </div>
+      </div>
+      <form class="search-form" id="search-form" onsubmit="return false">
+        <div class="search-wrapper">
+          <input type="text" class="search-input" id="search-input" name="search-input" autocomplete="off" placeholder="Search city..." autofocus>
+          <div class="mic-button" id="mic-button"></div>
+        </div>
+        <button class="search-button" id="search-button">Search</button>
+      </form>
+    </header>
+    <main class="main">
+      <section class="weather-section">
+        <div class="location">Minsk, Belarus</div>
+        <span class="current-day">mon 28 october</span>
+        <span class="current-time">17:23:12</span>
+        <div class="weather-today">
+            <p class="temperature-today"><span id="temperature-today">10</span>&deg;</p>
+            <div class="summary-weather">
+              <img class="today-weather-icon" src="./assets/img/weather/clear-day.svg" alt="wether-icon">
+              <div class="text-info">
+                <p id="description-weather">overcast</p>
+                <p>
+                  <span data-summary-weather>Feels like:</span>
+                  <span id="feels-like">7</span>&deg;
+                </p>
+                <p>
+                  <span data-summary-weather>Wind:</span>
+                  <span id="wind-spd">2</span>&nbsp;<span data-summary-weather>m/s</span>
+                </p>
+                <p>
+                  <span data-summary-weather>Humidity:</span>
+                  <span id="humidity">83</span>%
+                </p>
+              </div>
+            </div>
+        </div>
+        <div class="weather-future">
+          <div class="forecast-card">
+            <p class="future-weekday text-info">Tuesday</p>
+            <div class="forecast-info">
+              <p class="temperature-forecast"><span data-temperature-forecast>10</span>&deg;</p>
+              <img class="forecast-icon" src="./assets/img/weather/clear-day.svg" alt="forecast-icon">
+            </div>
+          </div>
+          <div class="forecast-card">
+            <p class="future-weekday text-info">Tuesday</p>
+            <div class="forecast-info">
+              <p class="temperature-forecast"><span data-temperature-forecast>10</span>&deg;</p>
+              <img class="forecast-icon" src="./assets/img/weather/clear-day.svg" alt="forecast-icon">
+            </div>
+          </div>
+          <div class="forecast-card">
+            <p class="future-weekday text-info">Tuesday</p>
+            <div class="forecast-info">
+              <p class="temperature-forecast"><span data-temperature-forecast>10</span>&deg;</p>
+              <img class="forecast-icon" src="./assets/img/weather/clear-day.svg" alt="forecast-icon">
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="map-section">
+        <div class="map mask" id="map"></div>
+        <p class="coordinates"><span data-coordinates>Latitude:</span> <span id="lat">53</span></p>
+        <p class="coordinates"><span data-coordinates>Longitude:</span> <span id="lng">53</span></p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

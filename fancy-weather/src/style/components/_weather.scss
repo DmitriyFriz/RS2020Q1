@@ -1,0 +1,110 @@
+.location {
+  text-transform: uppercase;
+  font-size: 44px;
+  line-height: 54px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.current-day, .current-time {
+  text-transform: capitalize;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.current-time {
+  display: inline-flex;
+  width: 110px;
+}
+
+.current-day {
+  margin-right: 10px;
+}
+
+.weather-today {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.temperature-today {
+  font-size: 230px;
+}
+
+.summary-weather {
+  width: 280px;
+}
+
+.today-weather-icon {
+  width: 175px;
+}
+
+.text-info {
+  font-size: 22px;
+  line-height: 37px;
+  text-transform: uppercase;
+}
+
+.weather-future {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.future-weekday {
+  line-height: 27px;
+}
+
+.forecast-card {
+  margin-right: 30px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.forecast-info {
+  display: flex;
+  align-items: flex-start;
+}
+
+.temperature-forecast {
+  font-size: 80px;
+  line-height: 100px;
+}
+
+.forecast-icon {
+  width: 70px;
+}
+
+@media (max-width: 767px) {
+
+  .location {
+    font-size: 32px;
+    line-height: 45px;
+  }
+
+  .temperature-today {
+    font-size: 175px;
+    line-height: 1;
+  }
+
+  .weather-today {
+    flex-direction: column;
+  }
+
+  .today-weather-icon {
+    margin-top: -45px;
+  }
+
+  .weather-future {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .forecast-card {
+    margin-right: 0;
+    margin-top: 10px;
+  }
+}

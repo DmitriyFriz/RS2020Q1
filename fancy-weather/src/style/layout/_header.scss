@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 767px) {
+  .header{
+    flex-direction: column;
+    height: 110px;
+  }
+}
+
+.button-group{
+  display: flex;
+}
+

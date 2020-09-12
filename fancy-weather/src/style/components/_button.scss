@@ -1,0 +1,45 @@
+.button {
+  width: 44px;
+  height: 44px;
+  background-color: $color-primary;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-hover;
+  }
+}
+
+.button-update {
+  background: url('../../assets/img/update-icon.svg') no-repeat center,
+    url('../../assets/img/update-background.svg') no-repeat center,
+    $color-primary;
+  margin-right: 12px;
+}
+
+.units-group {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 12px;
+}
+
+.button-units {
+  background-color: $color-secondary;
+
+  &:first-child {
+    border-radius: 5px 0  0 5px;
+  }
+
+  &:last-child {
+    border-radius: 0 5px 5px 0;
+  }
+}
+
+.units-active {
+  background-color: $color-primary;
+
+  &:hover {
+    background-color: $color-primary;
+    cursor: default;
+  }
+}
