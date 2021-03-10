@@ -2,7 +2,7 @@ import dataTranslate from './data/translate.data.js';
 
 export { getLocationData, getCoordinateData };
 
-const opencageKey = '23e52a2d9b934240a2f92b890c311ee7';
+const opencageKey = '65288b0bf0e440ee9864573538eec400';
 
 async function getLocationData(location, language) {
   const url = `https://api.opencagedata.com/geocode/v1/json?q=${location}
